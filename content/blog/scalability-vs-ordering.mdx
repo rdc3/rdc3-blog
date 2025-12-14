@@ -1,0 +1,31 @@
+---
+title: 'Scalability vs. Ordering'
+date: '2025-10-20'
+tags: ['Scalability', 'Performance', 'RabbitMQ']
+draft: false
+author: 'Rohan Dcunha'
+summary: 'An Architect’s Trade-Off Dilemma'
+---
+
+# Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Background: Monitoring Solution
+
+We develop a monitoring solution for an Enterprise application. While the solution has multiple components like the Backend service, Grafana, Thanos, Prometheus etc, the part that I’m bringing forward in this blog is related to the Backend service.
+
+## Dilemma: Off the shelf or not
+
+As our monolith backend grew, <b>horizontal scaling</b> became critical. However, our application, which processes alert notifications from sources like Grafana, had a strict requirement: <b>Alerts must be processed in the exact order received</b>. Processing an older 'Resolved' alert after a newer 'Firing' alert would lead to a critically incorrect final status.
+To scale while maintaining <b>strict ordering guarantees</b>, we faced a crucial architectural choice:
+
+1. <b>Distributed Queuing (Consistent Hash Exchange)</b>: Use a complex mechanism like a Consistent
+   Hash Exchange in RabbitMQ (RMQ) to route all related messages to the same consumer instance.
+2. <b>Application-Layer Versioning</b>: Implement a versioning mechanism within our application
+   logic to enforce order across multiple consumers.
+
+## Choice and Trade-off
+
+The Consistent Hash Exchange was quickly dismissed. While effective, it introduced an <b>operational dependency</b> — a dedicated monitoring service would be required to dynamically manage queue bindings as consumer instances scaled up or down. This added <b>complexity and maintenance burden</b>.
+We chose the <b>Application-Layer Versioning</b>. The publisher now tags messages with an incremental version. If a consumer receives a message whose previous version is not yet processed, the message is simply <b>requeued</b>. This solution was simpler to develop, kept the scaling logic self-contained within the application layer, and allowed us to achieve reliable horizontal scaling without compromising our essential ordering guarantee. The choice also aligns without future roadmap of cloud native architecture with AWS.
