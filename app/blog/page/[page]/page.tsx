@@ -10,6 +10,15 @@ export const metadata = {
   description: 'My Blogs - Rohan D`Cunha',
 };
 
+export async function generateStaticParams() {
+  const posts = sortedBlogPost(allBlogs);
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    page: (i + 1).toString(),
+  }));
+}
+
 export default function BlogPage({ params }: { params: { page: string } }) {
   const pageNumber = parseInt(params.page);
   const posts = sortedBlogPost(allBlogs);

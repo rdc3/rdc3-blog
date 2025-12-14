@@ -7,6 +7,12 @@ import { coreContent, formatBlogLink, sortedBlogPost } from '@/lib/utils/content
 import { allBlogs } from 'contentlayer/generated';
 import { Metadata } from 'next';
 
+export async function generateStaticParams() {
+  return allBlogs.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {

@@ -8,6 +8,8 @@
     "postbuild": "yarn rss",
     "rss": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
     "serve": "next start",
+    "export": "next build && next export",
+    "deploy": "npm run export && touch out/.nojekyll && echo 'rdcunha.in' > out/CNAME",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "prepare": "husky install"
   },

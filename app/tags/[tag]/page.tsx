@@ -9,6 +9,22 @@ export const metadata = {
   description: 'My Tags - Rohan D`Cunha',
 };
 
+export async function generateStaticParams() {
+  const tags = new Set<string>();
+
+  allBlogs.forEach((post) => {
+    if (post.tags) {
+      post.tags.forEach((tag) => {
+        tags.add(kebabCase(tag));
+      });
+    }
+  });
+
+  return Array.from(tags).map((tag) => ({
+    tag: tag,
+  }));
+}
+
 export default function Tag({ params }: { params: { tag: string } }) {
   const { tag } = params;
   const posts = allCoreContent(
