@@ -158,7 +158,7 @@ export default function TimelineLayout({ author, projects }: Props) {
                               dateTime={project.year}
                               aria-label={`Year: ${project.year}`}
                             >
-                              {project.year}
+                              {project.year} | {project.company}
                             </time>
                             <h3
                               className="mb-3 font-bold text-lg md:text-2xl text-gray-900 dark:text-white"
