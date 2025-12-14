@@ -2,6 +2,16 @@
 
 import { useLenis } from '@studio-freight/react-lenis';
 import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
+
+interface LenisScrollData {
+  scroll: number;
+  limit: number;
+  velocity: number;
+  direction: number;
+  progress: number;
+}
 
 function opacityForBlock(sectionProgress: number, blockNumber: number) {
   const progress = sectionProgress - blockNumber;
@@ -16,12 +26,12 @@ function opacityForBlock(sectionProgress: number, blockNumber: number) {
 export default function Intro() {
   const [scrollY, setScrollY] = useState(0);
 
-  useLenis(({ scroll }: any) => {
+  useLenis(({ scroll }: LenisScrollData) => {
     setScrollY(scroll);
   });
 
   const refContainer = useRef<HTMLDivElement>(null);
-  const numOfPages = 3;
+  const numOfPages = 4;
   let progress = 0;
   const { current: elContainer } = refContainer;
 
@@ -58,8 +68,36 @@ export default function Intro() {
             className="introText inline-block"
             style={{ opacity: opacityForBlock(progress, 2) }}
           >
-            I&apos;m passionate about cutting-edge, pixel perfect UI and intuitively implemented UX.
+            I&apos;m passionate about creating cutting-edge, pixel perfect UI and intuitively
+            implemented UX.
           </span>
+          <span
+            className="introText inline-block"
+            style={{ opacity: opacityForBlock(progress, 3) }}
+          >
+            Supported by Robust & Scalable Solutions at the backend.
+          </span>
+
+          <motion.div
+            animate={{
+              transform: `translateY(${progress}vh)`,
+              // transform: `translateY(2vh)`,
+            }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 transform md:bottom-8"
+          >
+            <div
+              role="presentation"
+              className="flex cursor-pointer flex-col items-center justify-center"
+              onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+                event.preventDefault();
+                const intro = document.querySelector('#works');
+
+                intro?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <HiOutlineArrowNarrowDown size={20} />
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>

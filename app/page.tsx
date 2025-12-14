@@ -1,4 +1,4 @@
-import Hero from '@/components/Hero';
+import Home from '@/components/Home';
 import Intro from '@/components/Intro';
 import { ScrollProvider } from '@/components/Providers/ScrollProvider';
 import RecentPosts from '@/components/RecentPosts';
@@ -15,7 +15,7 @@ export default function Page() {
 
   return (
     <ScrollProvider>
-      <Hero />
+      <Home />
       <Intro />
       <Works />
       <SectionContainer>

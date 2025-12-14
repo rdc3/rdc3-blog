@@ -5,8 +5,8 @@ import kebabCase from '@/lib/utils/kebabCase';
 import { allBlogs } from 'contentlayer/generated';
 
 export const metadata = {
-  title: 'Blog - Dale Larroder',
-  description: 'My Tags - Dale Larroder',
+  title: 'Blog - Rohan D`Cunha',
+  description: 'My Tags - Rohan D`Cunha',
 };
 
 export default function Tag({ params }: { params: { tag: string } }) {
@@ -19,6 +19,7 @@ export default function Tag({ params }: { params: { tag: string } }) {
 
   // Capitalize first letter and convert space to dash
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1);
+  console.log('Posts2:', posts);
 
   return (
     <MainLayout>

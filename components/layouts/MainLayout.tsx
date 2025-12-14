@@ -17,6 +17,11 @@ export default function MainLayout({ children }: Props) {
 
   return (
     <SectionContainer>
+      <div className="clouds">
+        <div className="clouds-1"></div>
+        <div className="clouds-2"></div>
+        <div className="clouds-3"></div>
+      </div>
       <motion.main
         data-scroll
         className="mb-auto"

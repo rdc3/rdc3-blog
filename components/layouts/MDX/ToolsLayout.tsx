@@ -3,7 +3,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function UsesLayout({ children }: Props) {
+export default function ToolsLayout({ children }: Props) {
   return (
     <div className="pt-8">
       <div className="mb-8 flex flex-col space-y-2 text-center">
@@ -11,7 +11,8 @@ export default function UsesLayout({ children }: Props) {
           What I Use
         </h1>
         <span className="text-gray-700  dark:text-gray-300">
-          Inspired by{' '}
+          Tools that I absolutely cannot live|work without.
+          {/* Inspired by{' '}
           <a
             href="https://wesbos.com/uses"
             className="underline-magical"
@@ -19,7 +20,7 @@ export default function UsesLayout({ children }: Props) {
             rel="noreferrer"
           >
             Wes bos
-          </a>
+          </a> */}
         </span>
       </div>
       <div className="prose max-w-none pb-8 text-justify text-sm dark:prose-dark md:text-lg xl:col-span-2">

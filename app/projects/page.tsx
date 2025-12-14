@@ -1,9 +1,9 @@
-import Projects from '@/components/Projects/Projects';
+import Image from 'next/image';
 import MainLayout from '@/layouts/MainLayout';
 
 export const metadata = {
-  title: 'Projects - Dale Larroder',
-  description: 'My Projects - Dale Larroder',
+  title: 'Projects - Rohan D`Cunha',
+  description: 'My Projects - Rohan D`Cunha',
 };
 
 export default function Page() {
@@ -17,7 +17,16 @@ export default function Page() {
           Here are some of my selected projects worth sharing.
         </p>
       </div>
-      <Projects />
+      <div className="flex justify-center items-center py-12">
+        <Image
+          src="/under_construction.png"
+          alt="Under Construction"
+          width={400}
+          height={300}
+          className="max-w-full h-auto"
+          priority
+        />
+      </div>
     </MainLayout>
   );
 }

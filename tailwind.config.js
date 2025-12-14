@@ -1,5 +1,6 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
+// const { apply } = require('file-loader');
 
 module.exports = {
   mode: 'jit',
@@ -7,6 +8,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      cursor: {
+        light: 'url(http://localhost:3000/arrow.light.webp), pointer',
+        dark: 'url(http://localhost:3000/arrow.dark.webp), pointer',
+      },
       spacing: {
         '9/16': '56.25%',
         0.75: '0.1875rem',
@@ -102,6 +107,7 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
+              cursor: 'crosshair',
               color: theme('colors.gray.700'),
               '&:hover': {
                 color: theme('colors.gray.700'),
@@ -165,6 +171,7 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
+              cursor: 'crosshair',
               color: theme('colors.gray.300'),
               '&:hover': {
                 color: theme('colors.gray.300'),
@@ -228,4 +235,4 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('tailwind-scrollbar')({ nocompatible: true }),
   ],
-}
+};

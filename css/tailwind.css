@@ -17,7 +17,9 @@ html::-webkit-scrollbar {
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
 }
 
 .underline-magical {
@@ -54,6 +56,61 @@ input:-webkit-autofill:focus {
 
 .introText {
   transition: opacity 0.4s;
+}
+.career-timeline h3,
+h6,
+ul,
+li {
+  text-align: left;
+}
+.career-timeline ul:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0rem;
+  margin-top: 0.2rem;
+}
+.career-timeline ul:last-child li {
+  display: inline-flex;
+  padding: 0rem 0.3rem;
+  border-radius: 0.5rem;
+  margin: 0.3rem 0.15rem;
+  font-size: 1rem;
+  box-shadow: 0.2rem 0.25rem 0.1875rem 0 rgba(0, 0, 0, 0.14);
+  background-color: #e5e7eb;
+  color: #374151;
+  border: 0;
+  text-align: left;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: column;
+}
+
+.dark .career-timeline ul:last-child li {
+  background-color: #374151;
+  color: #f3f4f6;
+  box-shadow: 0.2rem 0.25rem 0.1875rem 0 rgba(0, 0, 0, 0.3);
+}
+.timeline-container > .timeline-child ~ .timeline-child {
+  margin-top: 2rem;
+}
+
+/* Responsive timeline spacing */
+@media (min-width: 640px) {
+  .timeline-container > .timeline-child ~ .timeline-child {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .timeline-container > .timeline-child ~ .timeline-child {
+    margin-top: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .timeline-container > .timeline-child ~ .timeline-child {
+    margin-top: 4rem;
+  }
 }
 
 [cmdk-root] {

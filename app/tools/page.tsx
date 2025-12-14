@@ -1,15 +1,15 @@
 import { MDXLayoutRenderer } from '@/components/MDXComponents';
-import UsesLayout from '@/layouts/MDX/UsesLayout';
+import ToolsLayout from '@/layouts/MDX/ToolsLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { allAuthors } from 'contentlayer/generated';
 
 export const metadata = {
-  title: 'Uses - Dale Larroder',
-  description: 'What I Use - Dale Larroder',
+  title: 'Tools - Rohan D`Cunha',
+  description: 'What I Use - Rohan D`Cunha',
 };
 
-export default function Uses() {
-  const author = allAuthors.find((p) => p.slug === 'uses');
+export default function Tools() {
+  const author = allAuthors.find((p) => p.slug === 'tools');
 
   if (!author) {
     return null;
@@ -17,9 +17,9 @@ export default function Uses() {
 
   return (
     <MainLayout>
-      <UsesLayout>
+      <ToolsLayout>
         <MDXLayoutRenderer content={author} />
-      </UsesLayout>
+      </ToolsLayout>
     </MainLayout>
   );
 }

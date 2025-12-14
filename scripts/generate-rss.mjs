@@ -1,9 +1,11 @@
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import path from 'path';
 import GithubSlugger from 'github-slugger';
 import { escape } from './htmlEscaper.mjs';
 import siteMetadata from '../content/siteMetadata.js';
-import { allBlogs } from '../.contentlayer/generated/index.mjs';
+
+// Load blogs data directly from JSON to avoid import assertion issues
+const allBlogs = JSON.parse(readFileSync('./.contentlayer/generated/Blog/_index.json', 'utf8'));
 
 export async function getAllTags() {
   const tagCount = {};

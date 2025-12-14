@@ -1,0 +1,45 @@
+---
+title: 'Nodejs | Crash course'
+date: '2022-09-17'
+tags: ['Nodejs', 'Javascript']
+draft: false
+author: 'Rohan Dcunha'
+summary: 'Get in, if you want to learn nodejs quickly'
+---
+
+# Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+# What is [Nodejs](https://nodejs.org/en)?
+
+It's an open-source, cross-platform JavaScript runtime environment that allows developers to build various applications
+
+### Here are some of the things you can build with Node.js:
+
+- Web applications: Node.js is a popular choice for building real-time web applications and APIs.
+- Command-line tools: You can write command-line tools and scripts using Node.js
+- Microservices: Node.js is well-suited for building microservices, which are small, independent services that work together to form a larger application.
+
+## V8Engine
+
+Node.js runs on the [V8 JavaScript engine](https://nodejs.org/en/learn/getting-started/the-v8-javascript-engine), the core of Google Chrome, outside of the browser. This allows Node.js to be very performant.
+![image](/static/blog/nodejs-crash-course/nodejs-v8engine.webp)
+
+## Lifecycle
+
+A Node.js app runs in a single process, without creating a new thread for every request. Node.js provides a set of asynchronous I/O primitives in its standard library that prevent JavaScript code from blocking, making blocking behavior the exception rather than the norm
+
+![image](/static/blog/nodejs-crash-course/nodejs-lifecycle.webp)
+
+# Simple Server
+
+> app.js
+>
+> ```js
+> const http = require('http');
+> const server = http.createServer((req, res) => {
+>   console.log(req);
+> });
+> server.listen(3000);
+> ```

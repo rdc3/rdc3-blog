@@ -3,6 +3,14 @@
 import { useLenis } from '@studio-freight/react-lenis';
 import { createContext, ReactNode, useState } from 'react';
 
+interface LenisScrollData {
+  scroll: number;
+  limit: number;
+  velocity: number;
+  direction: number;
+  progress: number;
+}
+
 interface ScrollValue {
   scrollY: number;
 }
@@ -18,7 +26,7 @@ interface ScrollProviderProps {
 export const ScrollProvider = ({ children }: ScrollProviderProps) => {
   const [scrollY, setScrollY] = useState(0);
 
-  useLenis(({ scroll }: any) => {
+  useLenis(({ scroll }: LenisScrollData) => {
     setScrollY(scroll);
   });
 
